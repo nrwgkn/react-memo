@@ -22,13 +22,19 @@ const Memo = () => {
 
   // ADD
   const handleMemoAdd = () => {
-    const newMemo = {
-      id: Math.random().toString(32).substring(2),
-      content: "dummy",
-    };
-    const newMemos = [...memos, newMemo];
-    setMemos(newMemos);
-    setCurrentMemo(newMemo);
+    // 空の memo がある場合は追加しない
+    if (
+      (memos.length === 0 && currentMemo.content === "") ||
+      (memos.length > 0 && currentMemo.content !== "")
+    ) {
+      const newMemo = {
+        id: Math.random().toString(32).substring(2),
+        content: "",
+      };
+      const newMemos = [...memos, newMemo];
+      setMemos(newMemos);
+      setCurrentMemo(newMemo);
+    }
   };
 
   // DELETE
