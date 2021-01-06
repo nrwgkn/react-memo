@@ -9,12 +9,13 @@ const List = () => {
   const [searchMemoResults, setSearchMemoResults] = useState([]);
   const [isSearch, setIsSearch] = useState(false);
 
-  // memo 選択時
+  // memo 選択
   const handleMemoClick = (id) => {
     const clickedMemo = memos.find((memo) => memo.id === id);
     setCurrentMemo(clickedMemo);
   };
 
+  // memo 検索
   const handleMemoSearch = (e) => {
     const searchResults = memos.filter((memo) => {
       return (
@@ -25,6 +26,7 @@ const List = () => {
     setIsSearch(true);
   };
 
+  // memo 一覧表示
   const showMemoList = memos.map((memo) => {
     return (
       <li
@@ -37,6 +39,7 @@ const List = () => {
     );
   });
 
+  // memo 検索結果一覧表示
   const showSearchResults = searchMemoResults.map((memo) => {
     return (
       <li
