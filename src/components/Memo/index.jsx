@@ -20,7 +20,7 @@ const Memo = () => {
     JSON.parse(localStorage.getItem("react-memo")) || []
   );
   const [currentMemo, setCurrentMemo] = useState(initialState.useMemo);
-  const [darkMode, setDarkMode] = useContext(Mode);
+  const [darkMode, setDarkMode] = useContext(Mode); // eslint-disable-line
 
   // ADD
   const handleMemoAdd = () => {
