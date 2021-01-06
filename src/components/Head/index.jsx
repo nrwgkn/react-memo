@@ -4,9 +4,15 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import DeleteIcon from "@material-ui/icons/Delete";
 import "./index.css";
 
-const Head = ({ onMemoAdd }) => {
+const Head = ({ onMemoAdd, onMemoDelete }) => {
+  // ADD
   const handleMemoAdd = () => {
     onMemoAdd();
+  };
+
+  // DELETE
+  const handleMemoDelete = () => {
+    onMemoDelete();
   };
 
   return (
@@ -24,6 +30,7 @@ const Head = ({ onMemoAdd }) => {
           variant="contained"
           color="secondary"
           startIcon={<DeleteIcon />}
+          onClick={handleMemoDelete}
         >
           Delete
         </Button>
