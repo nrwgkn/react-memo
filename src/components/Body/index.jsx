@@ -1,11 +1,13 @@
 import React from "react";
 import List from "../List";
+import "./index.css";
 
 const Body = () => {
   return (
-    <div>
-      body
-      <List />
+    <div className="memo-body">
+      <div className="memo-body_list">
+        <List />
+      </div>
     </div>
   );
 };
