@@ -31,6 +31,17 @@ const Memo = () => {
     setCurrentMemo(newMemo);
   };
 
+  // DELETE
+  const handleMemoDelete = () => {
+    const newMemos = memos.filter((memo) => memo.id !== currentMemo.id);
+    const newMemo = {
+      id: "",
+      content: "",
+    };
+    setMemos(newMemos);
+    setCurrentMemo(newMemo);
+  };
+
   // memos 一覧に変更があるたびに localStrage に保存
   useEffect(() => {
     localStorage.setItem("react-memo", JSON.stringify(memos));
@@ -51,7 +62,7 @@ const Memo = () => {
     <div className="memo">
       <Memos.Provider value={[memos, setMemos]}>
         <CurrentMemo.Provider value={[currentMemo, setCurrentMemo]}>
-          <Head onMemoAdd={handleMemoAdd} />
+          <Head onMemoAdd={handleMemoAdd} onMemoDelete={handleMemoDelete} />
           <Body />
         </CurrentMemo.Provider>
       </Memos.Provider>
