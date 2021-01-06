@@ -4,6 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
 const List = () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const [memos, setMemos] = useContext(Memos);
   const [currentMemo, setCurrentMemo] = useContext(CurrentMemo);
   const [searchMemoResults, setSearchMemoResults] = useState([]);
