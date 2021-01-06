@@ -5,6 +5,7 @@ const List = () => {
   const [memos, setMemos] = useContext(Memos);
   const [currentMemo, setCurrentMemo] = useContext(CurrentMemo);
 
+  // memo 選択時
   const handleMemoClick = (id) => {
     const clickedMemo = memos.find((memo) => memo.id === id);
     setCurrentMemo(clickedMemo);
