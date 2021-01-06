@@ -1,27 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "../Head";
 import Body from "../Body";
 import "./index.css";
 
-const dummyMemo = [
-  {
-    id: 1,
-    content: "dummyA",
-  },
-  {
-    id: 2,
-    content: "dummyB",
-  },
-  {
-    id: 3,
-    content: "dummyC",
-  },
-];
-
 export const Memos = React.createContext();
 
 const Memo = () => {
-  const [memos, setMemos] = useState(dummyMemo);
+  const [memos, setMemos] = useState(
+    JSON.parse(localStorage.getItem("react-memo")) || []
+  );
 
   // ADD
   const handleMemoAdd = () => {
@@ -32,6 +19,11 @@ const Memo = () => {
     const newMemos = [...memos, newMemo];
     setMemos(newMemos);
   };
+
+  // localStrage から memo を取得
+  useEffect(() => {
+    localStorage.setItem("react-memo", JSON.stringify(memos));
+  }, [memos]);
 
   return (
     <div className="memo">
