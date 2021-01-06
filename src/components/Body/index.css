@@ -1,12 +1,17 @@
 .memo-body {
   display: flex;
-  min-height: calc(100% - 56px);
+  min-height: calc(100vh - 56px);
 }
 
 .memo-body_list {
   min-height: 544px;
   background: #ddd;
   width: 20%;
+  border-radius: 10px;
+}
+
+.memo.is-dark .memo-body_list {
+  background: #222;
 }
 
 .memo-body_list li {
@@ -35,6 +40,10 @@
   padding-top: 15px;
 }
 
+.memo.is-dark .memo-body_list li ~ li {
+  border-top-color: #303030;
+}
+
 .memo-body_content {
   width: 80%;
   padding: 15px;
@@ -52,6 +61,10 @@
   background: #999;
 }
 
+.memo.is-dark .memo-body_search {
+  background: #666;
+}
+
 .memo-body_search form {
   display: flex;
 }
@@ -59,6 +72,10 @@
 .memo-body_search form input {
   width: 90%;
   border-bottom: 2px solid #333;
+}
+
+.memo.is-dark .memo-body_search form input::placeholder {
+  color: #999;
 }
 
 .memo-body_search form button {

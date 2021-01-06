@@ -1,7 +1,10 @@
 .memo-head {
   padding: 10px 30px;
   background: #333;
-  border-radius: 10px 10px 0 0;
+}
+
+.memo.is-dark .memo-head {
+  background: #222;
 }
 
 .header {
