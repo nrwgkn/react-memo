@@ -3,13 +3,22 @@ import Head from "../Head";
 import Body from "../Body";
 import "./index.css";
 
+const initialState = {
+  useMemo: {
+    id: "",
+    content: "",
+  },
+};
+
 export const Memos = React.createContext();
+export const CurrentMemo = React.createContext();
 
 const Memo = () => {
   // localStrage から memo を取得
   const [memos, setMemos] = useState(
     JSON.parse(localStorage.getItem("react-memo")) || []
   );
+  const [currentMemo, setCurrentMemo] = useState(initialState.useMemo);
 
   // ADD
   const handleMemoAdd = () => {
@@ -19,6 +28,7 @@ const Memo = () => {
     };
     const newMemos = [...memos, newMemo];
     setMemos(newMemos);
+    setCurrentMemo(newMemo);
   };
 
   // localStrage に memo を保存
@@ -29,8 +39,10 @@ const Memo = () => {
   return (
     <div className="memo">
       <Memos.Provider value={[memos, setMemos]}>
-        <Head onMemoAdd={handleMemoAdd} />
-        <Body />
+        <CurrentMemo.Provider value={[currentMemo, setCurrentMemo]}>
+          <Head onMemoAdd={handleMemoAdd} />
+          <Body />
+        </CurrentMemo.Provider>
       </Memos.Provider>
     </div>
   );
