@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Head from "../Head";
 import Body from "../Body";
+import { Mode } from "../../App";
 import "./index.css";
 
 const initialState = {
@@ -19,6 +20,7 @@ const Memo = () => {
     JSON.parse(localStorage.getItem("react-memo")) || []
   );
   const [currentMemo, setCurrentMemo] = useState(initialState.useMemo);
+  const [darkMode, setDarkMode] = useContext(Mode);
 
   // ADD
   const handleMemoAdd = () => {
@@ -59,7 +61,7 @@ const Memo = () => {
   }, [currentMemo]);
 
   return (
-    <div className="memo">
+    <div className={darkMode ? "memo is-dark" : "memo"}>
       <Memos.Provider value={[memos, setMemos]}>
         <CurrentMemo.Provider value={[currentMemo, setCurrentMemo]}>
           <Head onMemoAdd={handleMemoAdd} onMemoDelete={handleMemoDelete} />
