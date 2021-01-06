@@ -36,6 +36,15 @@ const Memo = () => {
     localStorage.setItem("react-memo", JSON.stringify(memos));
   }, [memos]);
 
+  useEffect(() => {
+    const newMemo = memos.map((memo) =>
+      memo.id === currentMemo.id ? currentMemo : memo
+    );
+    setMemos(newMemo);
+    // Warning回避
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentMemo]);
+
   return (
     <div className="memo">
       <Memos.Provider value={[memos, setMemos]}>
