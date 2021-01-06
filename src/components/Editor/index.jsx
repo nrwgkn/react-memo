@@ -5,6 +5,7 @@ const Editor = () => {
   const [currentMemo, setCurrentMemo] = useContext(CurrentMemo);
   const [editMemoContent, setEditMemoContent] = useState("");
 
+  // memo の編集
   const handleMemoChange = (e) => {
     setEditMemoContent(e.target.value);
     setCurrentMemo({
@@ -13,6 +14,7 @@ const Editor = () => {
     });
   };
 
+  // 選択した memo の内容を Editor に反映させる
   useEffect(() => {
     setEditMemoContent(currentMemo.content);
   }, [currentMemo]);

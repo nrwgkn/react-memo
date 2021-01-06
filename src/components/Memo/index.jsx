@@ -31,17 +31,19 @@ const Memo = () => {
     setCurrentMemo(newMemo);
   };
 
-  // localStrage に memo を保存
+  // memos 一覧に変更があるたびに localStrage に保存
   useEffect(() => {
     localStorage.setItem("react-memo", JSON.stringify(memos));
   }, [memos]);
 
+  // 編集（選択）中の memo の内容を memos 一覧の該当部分に反映
   useEffect(() => {
-    const newMemo = memos.map((memo) =>
+    const newMemos = memos.map((memo) =>
       memo.id === currentMemo.id ? currentMemo : memo
     );
-    setMemos(newMemo);
-    // Warning回避
+    setMemos(newMemos);
+
+    // Warning 回避
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentMemo]);
 
