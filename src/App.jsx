@@ -1,4 +1,3 @@
-import "./App.css";
 import Memo from "./components/Memo";
 
 function App() {
