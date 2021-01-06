@@ -6,6 +6,7 @@ import "./index.css";
 export const Memos = React.createContext();
 
 const Memo = () => {
+  // localStrage から memo を取得
   const [memos, setMemos] = useState(
     JSON.parse(localStorage.getItem("react-memo")) || []
   );
@@ -20,7 +21,7 @@ const Memo = () => {
     setMemos(newMemos);
   };
 
-  // localStrage から memo を取得
+  // localStrage に memo を保存
   useEffect(() => {
     localStorage.setItem("react-memo", JSON.stringify(memos));
   }, [memos]);
