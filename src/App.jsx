@@ -14,14 +14,19 @@ function App() {
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("darkMode") === "on" ? true : false
   );
+
+  // DarkMode ON
   const handleDarkModeOn = () => {
     localStorage.setItem("darkMode", "on");
     setDarkMode(true);
   };
+
+  // DarkMode OFF
   const handleDarkModeOff = () => {
     localStorage.setItem("darkMode", "off");
     setDarkMode(false);
   };
+
   const theme = createMuiTheme({
     palette: {
       primary: {
